@@ -1,0 +1,47 @@
+POST http://localhost:3000/feedback/parents
+Content-Type: application/json
+
+{
+    "ratings":[1,2,3,4,5],
+    "suggestions":["hi","hello"]
+}
+
+###
+
+POST http://localhost:3000/feedback/students
+Content-Type: application/json
+
+{
+    "ratings":[1,2,3,4,5],
+    "suggestions":["hi","hello"]
+}
+
+###
+
+POST http://localhost:3000/feedback/employee
+Content-Type: application/json
+
+{
+    "department": "CSE",
+    "academicYear": 2018,
+    "regulation": "VR19",
+    "ratings":[1,2,3,4,5],
+    "suggestions":["hi","hello"]
+}
+
+###
+
+POST http://localhost:3000/feedback/faculty
+Content-Type: application/json
+
+{
+    "department": "CSE",
+    "name": "Ronin",
+    "education": "BTECH",
+    "designation": "Dont Know",
+    "occupationDetails": "Nothing",
+    "academicYear": 2018,
+    "regulation": "VR19",
+    "ratings":[1,2,3,4,5],
+    "suggestions":["hi","hello"]
+}
