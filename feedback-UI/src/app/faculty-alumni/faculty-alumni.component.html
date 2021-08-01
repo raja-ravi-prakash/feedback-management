@@ -1,263 +1,89 @@
 <div class="">
-          
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <form #form>
 
         <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput name="name" type="text" [(ngModel)]="ob.name">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Education</mat-label>
+                <mat-select matNativeControl name="education" [(ngModel)]="ob.education">
+                    <mat-option value="{{item}}" *ngFor="let item of educationTypes">{{item}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Designation</mat-label>
+                <input matInput name="designation" type="text" [(ngModel)]="ob.designation">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Occupation Details</mat-label>
+                <textarea matInput name="occupationDetails" type="text" [(ngModel)]="ob.occupationDetails"></textarea>
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Department</mat-label>
+                <input matInput name="department" type="text" [(ngModel)]="ob.department">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Academic Year</mat-label>
+                <input matInput name="academicYear" type="number" [(ngModel)]="ob.academicYear">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Regulation</mat-label>
+                <input matInput name="regulation" type="text" [(ngModel)]="ob.regulation">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card">
+            <mat-form-field appearance="fill">
+                <mat-label>Suggestions</mat-label>
+                <textarea matInput name="suggestions" type="text" [(ngModel)]="ob.suggestions"></textarea>
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card class="card" *ngFor="let r of ob.ratings;let i=index">
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                     <mat-label>
-                        Courses in the Curriculum are appropriate, useful to students to promote advanced learning
+                        {{r.question}}
                     </mat-label>
-                   
+
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <mat-form-field appearance="fill">
                         <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        The sequence of courses is appropriate and are evenly distributed across the Curriculum
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Understanding the level required to study this program is as per the level of the student
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                       <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Field projects/Internships/student projects are adequate in the Curriculum
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        The designed Curriculum impart necessary skills to students which make them industry ready
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        The courses are relevant for competitive examinations like GATE, PSU etc.,
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        The courses are updated with the current trends of Industry and Academia to facilitate placements.
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        The academic flexibility embedded in the curriculum provides vast opportunities to students
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Courses in the curriculum promote Entrepreneurship and students are encouraged and supported to initiate startups.
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Courses are relevant to local, national, regional, and Global development needs
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Extent of Curriculum addressing gender, environment and
-                        sustainability, human values and professional ethics,
-                        development of creative and divergent competencies.
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Rate the electives offered in Curriculum relation to the Technological advancements/extra learning/self-learning
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
+                        <mat-select matNativeControl name="rating" [(ngModel)]="ob.ratings[i].rating">
+                            <mat-option value="{{item.value}}" *ngFor="let item of ratingVals">{{item.data}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
             </div>
         </mat-card>
 
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <mat-label>
-                        Overall rating on Curriculum
-                    </mat-label>
-                   
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select</mat-label>
-                        <mat-select matNativeControl  formControlName="">
-                            <mat-option value="{{item.value}}" *ngFor="let item of options">{{item.data}} </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
 
-        <mat-card class="card">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <mat-label>
-                        Please make any other suggestions realted to curriculumcurriculum. (additions-new courses/topics (or) deletions in
-                        Curriculum) (not included in above list) Please suggest any skill oriented and advanced courses useful and
-                        helpful to students.
-                    </mat-label>
-                </div>
-                <div class="col-sm-12 col-md-12">
-                    <mat-form-field appearance="outline">
-                        <textarea matInput placeholder="Comment" ></textarea>
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-card>
         <mat-card class="card bg-dark">
-            <button mat-raised-button color="primary">Submit</button>
+            <button type="button" (click)="onSubmit()" mat-raised-button color="primary">Submit</button>
         </mat-card>
     </form>
 </div>

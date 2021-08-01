@@ -1,17 +1,23 @@
-enum EducationType {
-    grad = "Graduate",
-    postgrad = "Post Graduate",
+export const EducationType = [
+    "Graduate",
+    "Post Graduate",
+    "Other"
+];
+
+export const RatingVals = [
+    { data: "EXCELLENT", value: 5 },
+    { data: "VERY GOOD", value: 4 },
+    { data: "GOOD", value: 3 },
+    { data: "SATISFACTORY", value: 2 },
+    { data: "POOR", value: 1 }
+];
+
+export interface Rating {
+    question: string,
+    rating: string
 }
 
-enum Rating {
-    a = "Excellent",
-    b = "VeryGood",
-    c = "Good",
-    d = "Average",
-    e = "Poor"
-}
-
-export var facultyQuestions: string[] = [
+export const facultyQuestions: string[] = [
     "Courses in the Curriculum are appropriate, useful to students to promote advanced learning",
     "The sequence of courses is appropriate and are evenly distributed across the Curriculum",
     "Understanding the level required to study this program is as per the level of the student",
@@ -35,11 +41,11 @@ export interface FacultyOrAluminiFeedback {
     occupationDetails: string,
     academicYear: number,
     regulation: string,
-    ratings: Number[]
-    suggestions: string[]
+    ratings: Rating[]
+    suggestions: string
 }
 
-export var employeeOrIndustryQuestions: string[] = [
+export const employeeOrIndustryQuestions: string[] = [
     "Adequate flexibility available in the choice of subjects to the students",
     "The courses offered to provide a solution to issues relevant to Gender, Ethics, Human Values, Environment and Sustainability.",
     "The current syllabus is job-oriented, skill-based, and value-oriented.",
@@ -54,11 +60,11 @@ export interface EmployeesOrIndustryFeedback {
     department: string,
     academicYear: number,
     regulation: string,
-    ratings: Number[]
-    suggestions: string[]
+    ratings: Rating[]
+    suggestions: string
 }
 
-export var parentQuestions: string[] = [
+export const parentQuestions: string[] = [
     "Courses in the curriculum promote Entrepreneurship",
     "Sensitization of Students towards cross- cutting issues like gender equality, environment, and sustainability, ethics and values, etc.",
     "Academic flexibility in the curriculum",
@@ -69,11 +75,11 @@ export var parentQuestions: string[] = [
 ];
 
 export interface ParentsFeedback {
-    ratings: Number[],
-    suggestions: string[]
+    ratings: Rating[],
+    suggestions: string
 }
 
-export var studentsQuestions: string[] = [
+export const studentsQuestions: string[] = [
     "Adequate flexibility available in the curriculum helped to work in multidisciplinary fields",
     "The Curriculum is compatibility competitive examinations",
     "Professional enhancement/Communication skills inputs sufficiently provided in the Curriculum",
@@ -84,6 +90,6 @@ export var studentsQuestions: string[] = [
 ];
 
 export interface StudentsFeedback {
-    ratings: Number[],
-    suggestions: string[]
+    ratings: Rating[],
+    suggestions: string
 }

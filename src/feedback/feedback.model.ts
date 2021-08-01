@@ -1,17 +1,23 @@
 import { Document, Schema } from 'mongoose';
 
 
-enum EducationType {
-    grad = "Graduate",
-    postgrad = "Post Graduate",
-}
+export const EducationType = [
+    "Graduate",
+    "Post Graduate",
+    "Other"
+];
 
-enum Rating {
-    a = "Excellent",
-    b = "VeryGood",
-    c = "Good",
-    d = "Average",
-    e = "Poor"
+export const RatingVals = [
+    { value: "EXCELLENT", data: 5 },
+    { value: "VERY GOOD", data: 4 },
+    { value: "GOOD", data: 3 },
+    { value: "SATISFACTORY", data: 2 },
+    { value: "POOR", data: 1 }
+];
+
+export interface Rating {
+    question: string,
+    rating: string
 }
 
 export var facultyQuestions: string[] = [
@@ -33,13 +39,13 @@ export var facultyQuestions: string[] = [
 export interface FacultyOrAluminiFeedback extends Document {
     department: string,
     name: string,
-    education: EducationType | string,
+    education: string,
     designation: string,
     occupationDetails: string,
     academicYear: number,
     regulation: string,
-    ratings: Number[]
-    suggestions: string[]
+    ratings: Rating[]
+    suggestions: string
 }
 
 export const FacultySchema = new Schema({
@@ -51,11 +57,10 @@ export const FacultySchema = new Schema({
     academicYear: Number,
     regulation: String,
     ratings: [{
-        type: Number
+        question: String,
+        rating: Number
     }],
-    suggestions: [{
-        type: String
-    }]
+    suggestions: String
 });
 
 export var employeeOrIndustryQuestions: string[] = [
@@ -73,8 +78,8 @@ export interface EmployeesOrIndustryFeedback extends Document {
     department: string,
     academicYear: number,
     regulation: string,
-    ratings: Number[]
-    suggestions: string[]
+    ratings: Rating[]
+    suggestions: string
 }
 
 export const EmployeeSchema = new Schema({
@@ -82,11 +87,10 @@ export const EmployeeSchema = new Schema({
     academicYear: Number,
     regulation: String,
     ratings: [{
-        type: Number
+        question: String,
+        rating: Number
     }],
-    suggestions: [{
-        type: String
-    }]
+    suggestions: String
 });
 
 export var parentQuestions: string[] = [
@@ -100,13 +104,14 @@ export var parentQuestions: string[] = [
 ];
 
 export interface ParentsFeedback extends Document {
-    ratings: Number[],
+    ratings: Rating[],
     suggestions: string[]
 }
 
 export const ParentsSchema = new Schema({
     ratings: [{
-        type: Number
+        question: String,
+        rating: Number
     }],
     suggestions: [{
         type: String
@@ -124,13 +129,14 @@ export var studentsQuestions: string[] = [
 ];
 
 export interface StudentsFeedback {
-    ratings: Number[],
+    ratings: Rating[],
     suggestions: string[]
 }
 
 export const StudentsSchema = new Schema({
     ratings: [{
-        type: Number
+        question: String,
+        rating: Number
     }],
     suggestions: [{
         type: String

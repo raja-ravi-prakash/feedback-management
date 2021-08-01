@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { ServiceService } from '../service/service.service';
+import { ParentsFeedback, parentQuestions, RatingVals } from '../models/feedback.model';
 
 @Component({
   selector: 'app-parents',
@@ -7,21 +8,27 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from
   styleUrls: ['./parents.component.scss']
 })
 export class ParentsComponent implements OnInit {
-  form=this.fb.group({});
-  options=[
-    {'value':"EXCELLENT" , 'data':"Excellent"},
-    {'value':"VERY GOOD" , 'data':"Very Good"},
-    {'value':"GOOD" , 'data':"Good"},
-    {'value':"SATISFACTORY" , 'data':"Satisfactory"},
-    {'value':"POOR" , 'data':"Poor"}
-];
-  constructor(private fb:FormBuilder) { }
+  constructor(private s: ServiceService) { }
+
+  public ob: ParentsFeedback = {
+    ratings: [],
+    suggestions: ""
+  }
+  public ratingVals = RatingVals;
 
   ngOnInit(): void {
+    parentQuestions.forEach((val, ind) => {
+      this.ob.ratings.push({
+        question: val,
+        rating: ""
+      });
+    })
   }
-  onSubmit()
-  {
 
+  async onSubmit() {
+    this.s.showLoading();
+    let res = await this.s.createParent(this.ob).toPromise();
+    this.s.endLoading(res);
   }
 
 }

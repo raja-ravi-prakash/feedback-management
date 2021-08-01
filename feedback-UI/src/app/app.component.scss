@@ -300,3 +300,33 @@
 .dummy{
   height: 4em;
 }
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  box-shadow: 0px 0px 10px grey;
+  color: white;
+  h3 {
+    margin-left: 20px;
+  }
+  img {
+    height: 40px;
+  }
+  padding: 20px;
+}
+
+.loading {
+  position: fixed;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -200;
+  background-color: rgba(0, 0, 0, 0.116)  ;
+  mat-spinner {
+    left: 50%;
+    top: 50%;
+  }
+}
+

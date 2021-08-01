@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { studentsQuestions, StudentsFeedback, RatingVals } from '../models/feedback.model';
+import { ServiceService } from '../service/service.service';
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -7,19 +9,26 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from
 })
 export class StudentComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
-  form=this.fb.group({});
-  options=[
-    {'value':"EXCELLENT" , 'data':"Excellent"},
-    {'value':"VERY GOOD" , 'data':"Very Good"},
-    {'value':"GOOD" , 'data':"Good"},
-    {'value':"SATISFACTORY" , 'data':"Satisfactory"},
-    {'value':"POOR" , 'data':"Poor"}
-];
-  ngOnInit(): void {
-  }
-  onSubmit()
-  {
 
+  constructor(private s: ServiceService) { }
+  public ob: StudentsFeedback = {
+    ratings: [],
+    suggestions: ""
+  }
+  public ratingVals = RatingVals;
+
+  ngOnInit(): void {
+    studentsQuestions.forEach((val, ind) => {
+      this.ob.ratings.push({
+        question: val,
+        rating: ""
+      });
+    })
+  }
+
+  async onSubmit() {
+    this.s.showLoading();
+    let res = await this.s.createStudent(this.ob).toPromise();
+    this.s.endLoading(res);
   }
 }

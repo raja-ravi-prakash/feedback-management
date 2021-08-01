@@ -1,12 +1,39 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA_q7nKv_5n18skR4u0jWk3Zzb6u8IvQLlp2Gw54cV_A517uujmApND2q29LKfhiovb3c&usqp=CAU"
-  />
+<!-- <div class="toolbar" role="banner">
+  <img width="40" alt="Angular Logo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Vignan_logo.png/771px-Vignan_logo.png" />
   <span>Vignan's Institute of Information Technology</span>
-    <div class="spacer"></div>
+  <div class="spacer"></div>
+</div> -->
+<div id="loading" class="loading" #loading>
+  <mat-spinner></mat-spinner>
 </div>
-<div class="dummy"></div>
+<div class="nav-bar">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Vignan_logo.png" />
+  <h3>Vignan's Institutes of Information Technology</h3>
+</div>
+
+<div class="content">
+  <mat-card class="card">
+    <a routerLink="student">
+      <h1>Student</h1>
+    </a>
+  </mat-card>
+  <mat-card class="card">
+    <a routerLink="/employees">
+      <h1>Employee</h1>
+    </a>
+  </mat-card>
+  <mat-card class="card">
+    <a routerLink="/parent">
+      <h1>Parent</h1>
+    </a>
+  </mat-card>
+  <mat-card class="card">
+    <a routerLink="/faculty">
+      <h1>Faculty</h1>
+    </a>
+  </mat-card>
+</div>
+
 <router-outlet></router-outlet>

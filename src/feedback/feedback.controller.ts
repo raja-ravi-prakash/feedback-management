@@ -20,12 +20,12 @@ export class FeedBackController {
 
     @Post('students')
     async createStudentFeedback(@Body() body) {
-        try {
-            let res = await this.feedbackService.createStudent(body);
-            return this.feedbackService.responseMiddleWare(res, "Student Feedback Doc Created Successfully", true, this.logger);
-        } catch (error) {
-            return this.feedbackService.responseMiddleWare(null, error.mesage, false, this.logger);
-        }
+        // try {
+        let res = await this.feedbackService.createStudent(body);
+        return this.feedbackService.responseMiddleWare(res, "Student Feedback Doc Created Successfully", true, this.logger);
+        // } catch (error) {
+        //     return this.feedbackService.responseMiddleWare(null, error.mesage, false, this.logger);
+        // }
     }
 
     @Post('employee')

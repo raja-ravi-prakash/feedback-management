@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "ratings":[1,2,3,4,5],
-    "suggestions":["hi","hello"]
+    "suggestions":"hi"
 }
 
 ###
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "ratings":[1,2,3,4,5],
-    "suggestions":["hi","hello"]
+    "suggestions":"hi"
 }
 
 ###
@@ -26,7 +26,7 @@ Content-Type: application/json
     "academicYear": 2018,
     "regulation": "VR19",
     "ratings":[1,2,3,4,5],
-    "suggestions":["hi","hello"]
+    "suggestions":"hi"
 }
 
 ###
@@ -43,5 +43,5 @@ Content-Type: application/json
     "academicYear": 2018,
     "regulation": "VR19",
     "ratings":[1,2,3,4,5],
-    "suggestions":["hi","hello"]
+    "suggestions":"hi"
 }

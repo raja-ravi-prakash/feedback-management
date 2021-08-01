@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { ServiceService } from '../service/service.service';
+import { facultyQuestions, FacultyOrAluminiFeedback, RatingVals, EducationType } from '../models/feedback.model';
 
 @Component({
   selector: 'app-faculty-alumni',
@@ -8,21 +9,34 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from
 })
 export class FacultyAlumniComponent implements OnInit {
 
-  form=this.fb.group({});
-  options=[
-    {'value':"EXCELLENT" , 'data':"Excellent"},
-    {'value':"VERY GOOD" , 'data':"Very Good"},
-    {'value':"GOOD" , 'data':"Good"},
-    {'value':"SATISFACTORY" , 'data':"Satisfactory"},
-    {'value':"POOR" , 'data':"Poor"}
-];
-  constructor(private fb:FormBuilder) { }
+  constructor(private s: ServiceService) { }
+
+  public ob: FacultyOrAluminiFeedback = {
+    department: "",
+    name: "",
+    education: "",
+    designation: "",
+    occupationDetails: "",
+    academicYear: 0,
+    regulation: "",
+    ratings: [],
+    suggestions: ""
+  }
+  public ratingVals = RatingVals;
+  public educationTypes = EducationType;
 
   ngOnInit(): void {
+    facultyQuestions.forEach((val, ind) => {
+      this.ob.ratings.push({
+        question: val,
+        rating: ""
+      });
+    })
   }
 
-  onSubmit()
-  {
-
+  async onSubmit() {
+    this.s.showLoading();
+    let res = await this.s.createFaculty(this.ob).toPromise();
+    this.s.endLoading(res);
   }
 }
