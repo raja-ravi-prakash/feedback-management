@@ -28,7 +28,7 @@ import { FeedbackService } from './feedback/feedback.service';
         name: "Student",
         schema: StudentsSchema
       }
-    ])
+    ]),
   ],
   controllers: [AppController, FeedBackController],
   providers: [AppService, FeedbackService],
